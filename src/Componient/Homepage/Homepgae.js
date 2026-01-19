@@ -187,6 +187,29 @@ margin-top: 60px;
     border-radius: 10px;
 }
 
+.apy{
+    font-size: 10px;
+}
+
+.yeild{
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.highyiled{
+    font-size: 10px;
+    opacity: .7;
+}
+
+.futured{
+    padding: 7px 7px;
+    width: fit-content;
+    border-radius: 8px;
+    font-size: 10px;
+    background-color: #c3ddfe;
+    color: #0284c7;
+    font-weight: 700;
+}
 .spans {
     padding: 10px 10px;
     border-radius: 10px;
@@ -345,19 +368,22 @@ border-radius: 10px;
   padding: 10px;
   width: fit-content;
   border-radius: 10px;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .businesss{
     display: flex;
     flex-direction: column;
     gap: 7px;
+    
 }
 .businesss h1{
     color: #14753b;
+    font-size: 25px;
 }
 .businesss p{
     opacity: .7;
+    font-size: 14px;
 }
 
 .minimumbalance{
@@ -369,6 +395,7 @@ border-radius: 10px;
 .minimumbalance span{
     display: flex;
     gap: 8px;
+    font-size: 14px;
     align-items: center;
     opacity: .7;
 }
@@ -409,6 +436,7 @@ padding: 20px 0px;
     background-color: #cefaf2;
     padding: 7px 10px;
     border-radius: 10px;
+    font-size: 12px;
 }
 
 .firsrbox{
@@ -426,12 +454,13 @@ padding: 20px 0px;
 
 .h1here{
     color: #046093;
+    font-size: 25px;
 }
 
 .pfirsrbox{
    width: 80%;
    margin-bottom: 20px;
-   
+   font-size: 14px;
 }
 
 .columbox div{
@@ -442,8 +471,16 @@ padding: 20px 0px;
     display: flex;
     flex-direction: column;
     gap: 5px;
-    font-size: 15px;
+    font-size: 13px;
     background-color: white;
+}
+
+.columbox div p{
+    opacity: .8;
+    font-weight: 700;
+}
+.columbox div span{
+    opacity: .8;
 }
 
 .focuedbox{

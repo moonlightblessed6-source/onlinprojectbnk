@@ -93,37 +93,37 @@ const Homepage = () => {
             <span className="spans"><FaPiggyBank/></span>
             <div className="insid-ratebox">
               <p>3.75%</p>
-              <span>APY*</span>
-              <p>HIGH YIELD SAVINGS</p>
-              <span>High Yield Savings Rate</span>
-              <p>FEATURED</p>
+              <span className="apy">APY*</span>
+              <p className="yeild">HIGH YIELD SAVINGS</p>
+              <span className="highyiled">High Yield Savings Rate</span>
+              <p className="futured">FEATURED</p>
             </div>
           </div>
           <div>
             <span className="spans"><FaCertificate/></span>
             <div className="insid-ratebox">
               <p>3.75%</p>
-              <span>APY*</span>
-              <p>HIGH YIELD SAVINGS</p>
-              <span>High Yield Savings Rate</span>
-              <p>FEATURED</p>
+              <span className="apy">APY*</span>
+              <p className="yeild">HIGH YIELD SAVINGS</p>
+              <span className="highyiled">High Yield Savings Rate</span>
+              <p className="futured">FEATURED</p>
             </div>
           </div>
           <div>
             <span className="spans"> <FaCreditCard /></span>
             <div className="insid-ratebox">
               <p>3.75%</p>
-              <span>APY*</span>
-              <p>HIGH YIELD SAVINGS</p>
-              <span>High Yield Savings Rate</span>
-              <p>FEATURED</p>
+              <span className="apy">APY*</span>
+              <p className="yeild">HIGH YIELD SAVINGS</p>
+              <span className="highyiled">High Yield Savings Rate</span>
+              <p className="futured">FEATURED</p>
             </div>
           </div>
           <div>
             <span className="spans"><FaHandHoldingUsd/></span>
             <div className="insid-ratebox">
               <p>3.75%</p>
-              <span>APY*</span>
+              <span className="apy">APY*</span>
               <p>HIGH YIELD SAVINGS</p>
               <span>High Yield Savings Rate</span>
               <p>FEATURED</p>
