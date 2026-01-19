@@ -155,8 +155,8 @@ const About = () => {
                 <h1>Ready to Join Our Family?</h1>
                 <p>Experience the difference of banking with a trusted partner who puts your financial success first.</p>
                 <div className="btn">
-                    <button><IoIosPersonAdd/> Open an Account</button>
-                    <button><IoMdCall/> Contact Us</button>
+                    <button onClick={() => window.location.href = '/open-account'}><IoIosPersonAdd/> Open an Account</button>
+                    <button onClick={() => window.location.href = '/contact-us'}><IoMdCall/> Contact Us</button>
                 </div>
             </div>
 

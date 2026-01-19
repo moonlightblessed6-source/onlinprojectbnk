@@ -18,7 +18,7 @@ const Footer = () => {
     <Footers>
      <div className="main-foort">
         <div >
-           <div className="mainlogo">
+           <div className="mainlogo" onClick={() => window.location.href = '/'}>
             <img src={logo} alt="logo" />
            </div>
             <p className="testban">Building financial strength together with personalized banking solutions for every member. Your trusted partner in financial growth.</p>
@@ -34,10 +34,10 @@ const Footer = () => {
         <div>
             <ul>
                 <li>Quick Links</li>
-                <li>About us</li>
-                <li>Service</li>
+                <li onClick={() => window.location.href = '/about-us'}>About us</li>
+                <li onClick={() => window.location.href = '/our-service'}>Service</li>
                 <li>Grants and Aids</li>
-                <li>Contact</li>
+                <li onClick={() => window.location.href = '/contact-us'}>Contact</li>
             </ul>
         </div>
         <div>
@@ -52,7 +52,7 @@ const Footer = () => {
         <div>
             <ul>
                 <li>Member Service</li>
-                <li>Online Banking</li>
+                <li onClick={() => window.location.href = '/login'}>Online Banking</li>
                 <li>Mobile App</li>
                 <li>ATM Locations</li>
                 <li>Security Center</li>

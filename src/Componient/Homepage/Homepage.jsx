@@ -46,8 +46,8 @@ const Homepage = () => {
               that everyone deserves a great experience every step of the way.
             </p>
             <div className="Openaccount">
-              <button>Open Account Today</button>
-              <button>Login to Banking</button>
+              <button onClick={() => window.location.href = '/open-account'}>Open Account Today</button>
+              <button onClick={() => window.location.href = '/login'}>Login to Banking</button>
             </div>
           </div>
 
@@ -225,7 +225,7 @@ const Homepage = () => {
             <span><FaCheck/> 24/7 customer support</span>
           </div>
           <div>
-            <button className="btn">Open Account Now</button>
+            <button className="btn" onClick={() => window.location.href = '/open-account'}>Open Account Now</button>
           </div>
         </div>
 
