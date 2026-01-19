@@ -26,7 +26,7 @@ const Contact = () => {
             <h1>Send us a Message</h1>
 
             <div className="mycontacfom">
-              <div>
+              <div className="firstname">
                 <div>
                   <label htmlFor="FullName">Full Name</label>
                   <input
@@ -66,6 +66,10 @@ const Contact = () => {
                 ></textarea>
               </div>
             </div>
+
+            <div className="btn">
+                <button> Send Message</button>
+            </div>
           </form>
         </div>
 
@@ -78,7 +82,7 @@ const Contact = () => {
 
           <div className="intouhbox">
             <div className="boxs">
-              <span>
+              <span className="conshere1">
                 <MdCall />
               </span>
               <div className="the writeips">
@@ -89,7 +93,7 @@ const Contact = () => {
             </div>
 
             <div className="boxs">
-              <span>
+              <span className="conshere2">
                 <MdEmail />
               </span>
               <div className="the writeips">
@@ -100,7 +104,7 @@ const Contact = () => {
             </div>
 
             <div className="boxs">
-              <span>
+              <span className="conshere3">
                 <IoLocation />
               </span>
               <div className="the writeips">
@@ -112,7 +116,7 @@ const Contact = () => {
             </div>
 
             <div className="boxs">
-              <span>
+              <span className="conshere4">
                 <FiClock />
               </span>
               <div className="the writeips">
@@ -126,11 +130,18 @@ const Contact = () => {
         </div>
       </div>
 
+
+
+
       <div className="locationmap">
+        <div className="find">
+            <p>Find Our Locations</p>
+            <span>Visit any of our convenient branch locations</span>
+        </div>
         <iframe
           src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d24191.63546718769!2d-74.02853380251251!3d40.71901958746316!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s123%20banking%20street%20financial%20district%20new%20york%20ny%2010001!5e0!3m2!1sen!2sng!4v1768820273730!5m2!1sen!2sng"
           width="100%"
-          height="450"
+          height="300"
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
         ></iframe>
