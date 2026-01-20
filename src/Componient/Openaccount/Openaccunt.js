@@ -138,18 +138,23 @@ form{
 }
 
 .icons1{
-    padding: 8px 8px;
-    border-radius: 8px;
+    padding: 10px 10px;
+    border-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-size: 25px;
     color: black;
     background-color: lightgray;
 }
 
+.icons1 svg{
+    font-size: 20px;
+}
+
 .icons1.active{
     color: white;
-    background-color: #0c71a9;
+    background-color: #0284c7;
     width: fit-content;
 }
 
@@ -162,11 +167,116 @@ form{
 }
 
 .mytop{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
 }
 .persoanlinf span{
-    font-size: 10px;
+    font-size: 12px;
     opacity: .7;
+}
+
+
+
+
+.formespersonal{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+label{
+    display: block;
+    font-size: 12px;
+}
+
+input, select{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 10px;
+    border: 1px solid lightgray;
+    outline: none;
+    border-radius: 8px;
+}
+
+input::placeholder{
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.btn{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-block: 20px;
+}
+
+.btn button{
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: none;
+    background-color: #0284c7;
+    color: white;
+}
+
+.btn button:hover{
+    cursor: pointer;
+    background-color: #0c71a9;
+}
+.btn1{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-block: 20px;
+}
+
+.btn1 button{
+    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: none;
+    background-color: #0284c7;
+    color: white;
+}
+
+.btn1 button:hover{
+    cursor: pointer;
+    background-color: #0c71a9;
+}
+
+.alreadymemeber{
+    text-align: center;
+    font-size: 13px;
+    margin-bottom: 40px;
+}
+.alreadymemeber span{
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.reserved{
+    text-align: center;
+    font-size: 9px;
+
+}
+select {
+  transition: font-size 0.2s ease;
+}
+
+
+.agreedtoterm{
+    display: flex;
+    justify-content: flex-start;
+    padding: 10px 0px;
+    font-size: 10px;
+   gap: 4px;
+}
+
+.agreedtoterm span{
+    color: blue;
+    text-decoration: underline;
 }
 `

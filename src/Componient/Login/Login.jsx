@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Logon } from "./Login";
 import Logo from "../../assets/Logo/logo.png";
 import { AiOutlineGlobal } from "react-icons/ai";
@@ -13,6 +13,39 @@ import { IoTerminal } from "react-icons/io5";
 
 
 const Login = () => {
+
+
+  const [formData, setFormData]= useState({
+    "username": "",
+    "password": ""
+  })
+
+  const Handlesumit = async (e) => {
+    e.preventDefault();
+   
+
+
+      try {
+    const res = await fetch("https://your-backend-api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      alert(data.message || "login failed");
+      return;
+    }
+
+    alert("login successfully!");
+  } catch (err) {
+    alert("Server error");
+  }
+  }
   return (
     <Logon>
       <div className="mainlogin">
@@ -73,7 +106,7 @@ const Login = () => {
         </div>
 
         <div className="seconds">
-          <form action="">
+          <form action="" onSubmit={Handlesumit}>
             <p className="signin">Sign In</p>
             <span className="topis">
               Access your West Vent Online Bank account
@@ -88,7 +121,10 @@ const Login = () => {
                   type="text"
                   name="username"
                   id="username"
+                  value={formData.username}
+                  onChange={(e) => setFormData({...formData, username: e.target.value})}
                   placeholder="Enter Your email address"
+                  required
                 />
               </div>
               <div>
@@ -100,7 +136,10 @@ const Login = () => {
                   type="password"
                   name="password"
                   id="password"
+                  value={formData.password}
+                  onChange={(e) => setFormData({...formData, password: e.target.value})}
                   placeholder="Enter your password"
+                  required
                 />
               </div>
             </div>
