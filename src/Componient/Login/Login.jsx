@@ -14,6 +14,7 @@ import { IoTerminal } from "react-icons/io5";
 
 const Login = () => {
 
+const [message, setMessage] = useState(false)
 
   const [formData, setFormData]= useState({
     "username": "",
@@ -22,7 +23,7 @@ const Login = () => {
 
   const Handlesumit = async (e) => {
     e.preventDefault();
-   
+
 
 
       try {
@@ -41,7 +42,10 @@ const Login = () => {
       return;
     }
 
-    alert("login successfully!");
+    setMessage(true);
+    setTimeout(() => {
+      window.location.href = '/profile'
+    }, 2000);
   } catch (err) {
     alert("Server error");
   }
@@ -104,6 +108,11 @@ const Login = () => {
             </div>
           </div>
         </div>
+
+
+          {message && <p className="success-msg">Login Successful!</p>}
+
+
 
         <div className="seconds">
           <form action="" onSubmit={Handlesumit}>

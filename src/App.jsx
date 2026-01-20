@@ -9,13 +9,18 @@ import Login from './Componient/Login/Login.jsx'
 import Openaccunt from './Componient/Openaccount/Openaccunt.jsx'
 import Contact from './Componient/Contact/Contact.jsx'
 import Dashbaord from './Componient/Dashboard/Dashboard.jsx'
+import ProfileNav from './Componient/Dashboard/ProfileNav.jsx'
 
 function App() {
 
+  const token = localStorage.getItem("accessToken")
 
   return (
     <>
-    <Navbar/>
+    {/* <Navbar/> */}
+    {/* <ProfileNav/> */}
+    {token ? <ProfileNav/> :  <Navbar/>}
+    
     <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='/login' element={<Login/>}/>

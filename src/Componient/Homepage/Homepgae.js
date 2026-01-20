@@ -15,7 +15,7 @@ background-size: cover;
 object-fit: contain;
 width: 100%;
 height: auto;
-margin-top: 60px;
+/* margin-top: 10px; */
 }
 
 .witht{

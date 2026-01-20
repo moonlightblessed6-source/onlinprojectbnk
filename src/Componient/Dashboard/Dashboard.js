@@ -9,15 +9,13 @@ background-color: #e3e7f2;
 
 .main-dashboard{
     margin: auto;
-    width: 90%;
+    width: 80%;
     /* margin-bottom: 10px; */
-    padding: 20px;
+    padding: 20px 0px;
 }
 
 .accoutninfo{
     background: linear-gradient(to right, #0d8bda, transparent);
-
-    margin-top:5rem;
     color: white;
     background-color: #1ba2f5;
     width: 100%;
@@ -212,27 +210,19 @@ background-color: #f8c728;
 
 
 
-
-@media screen and (max-width: 630px) {
-    .main-dashboard{
-width: 100%;
+@media screen and (max-width: 925px) {
+        .main-dashboard{
+width: 95%;
     }
-    
 }
-@media screen and (max-width: 576px) {
-    .main-dashboard{
-width: 100%;
-    }
 
+@media screen and (max-width: 576px) {
     .sendtopup{
         font-size: 12px;
     }
     
 }
 @media screen and (max-width: 440px) {
-    .main-dashboard{
-width: 100%;
-    }
 
     .sendtopup{
         font-size: 10px;
