@@ -40,7 +40,6 @@ height: auto;
     font-weight: 900;
     font-size: 50px;
     line-height: 45px;
-    margin-bottom: 20px;
 }
 
 .Openaccount{
@@ -704,6 +703,13 @@ margin: auto;
         width: 100%;
         
     }
+
+    .homepage-topic h2{
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 30px;
+   
+}
 
     .openhoursmain div {
 display: flex;
