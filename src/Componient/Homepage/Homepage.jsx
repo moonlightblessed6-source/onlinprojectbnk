@@ -39,13 +39,12 @@ const Homepage = () => {
         <div className="witht">
           <div className="homepage-topic">
             <h2>
-              West Vent Online <br />
+              West Vent Online
               Bank
             </h2>
             <p>
               We do banking differently. We believe that people come first, and
-              <br />
-              that everyone deserves a great experience every step of the way.
+that everyone deserves a great experience every step of the way.
             </p>
             <div className="Openaccount">
               <button style={{display: 'flex', justifyContent:'center', alignItems: 'center', gap: '3px'}} onClick={() => window.location.href = '/open-account'}><IoIosPersonAdd/> Open Account Today</button>

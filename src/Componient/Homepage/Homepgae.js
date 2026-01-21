@@ -15,14 +15,11 @@ background-size: cover;
 object-fit: contain;
 width: 100%;
 height: auto;
-/* margin-top: 10px; */
 }
 
 .witht{
     width: 90%;
-    margin: auto;
-    padding: 20px 0px;
-  
+    margin: 3rem auto;
 }
 
 .homepage-topic{
@@ -31,14 +28,16 @@ height: auto;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    width: 600px;
     /* padding: 0px 80px; */
     
 }
 
 .homepage-topic h2{
-    margin-top: 60px;
+    margin-top: 10px;
     font-weight: 900;
     font-size: 50px;
+    padding: 30px 0px;
     line-height: 45px;
 }
 
@@ -72,6 +71,7 @@ height: auto;
 .Rountine{
     color: white;
     display: flex;
+    padding: 40px 0px;
     margin-top: 30px;
      gap: 10px;
     
@@ -80,9 +80,10 @@ height: auto;
 .Rountineout{
     color: white;
     display: flex;
-    margin-top: 30px;
+    /* margin-top: 10px; */
      gap: 10px;
     display: none;
+
 }
 
 .box-same:first-child{
@@ -149,6 +150,7 @@ height: auto;
     gap: 8px;
     justify-content: center;
     align-items: center;
+    padding: 20px 0px;
 }
 
 .onliebank h2{
@@ -705,23 +707,28 @@ margin: auto;
 
 @media screen and (max-width: 815px){
     .openhoursmain{
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 40px;
         width: 100%;
         
     }
     .Rountineout{
         width: 95%;
-        margin: 2rem auto;
+        margin: -3rem auto;
         display: block;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        padding: 20px 0px;
         
     }
 
     .Rountine{
         display: none;
+    }
+
+    .homepage-topic{
+        width: 100%;
     }
 
     .homepage-topic h2{
@@ -801,8 +808,12 @@ text-align: center;
 
 .howtohlepyoubox{
     width: 95%;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
 
+}
+
+.server{
+    text-align: center;
 }
 
 
@@ -811,10 +822,31 @@ text-align: center;
     width: 95%;
 }
 
+.onliebank{
+    text-align: center;
+}
+
 .rate-box{
-    grid-template-columns: repeat(2, 1fr);    
+    grid-template-columns: repeat(1, 1fr);    
+}
+.rate-box div{
+    text-align:center ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 
+
+.mystart{
+    font-size: 25px;
+}
+
+
+.Openaccount{
+    flex-direction: column;
+    padding: 20px 0px;
+}
 }
 `
