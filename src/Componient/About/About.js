@@ -165,6 +165,12 @@ padding: 20px 0px;
     align-items: center;
     
 }
+.ourbox1{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    
+}
 
 .ourjornrybox{
     display: flex;
@@ -264,7 +270,7 @@ padding: 20px 0px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
-    width: 90%;
+    width: 100%;
     margin: auto;
     text-align: center;
     gap: 10px;
@@ -342,6 +348,64 @@ padding: 20px 0px;
 }
 
 
+
+.mianvalue{
+    width: 95%;
+    text-align: center;
+}
+
+.valibox{
+   width: 100%;
+   grid-template-columns: repeat(2, 1fr);
+   text-align: center;
+}
+
+.boxxes{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+.ourbox{
+    flex-direction: column;
+}
+
+.ourbox1{
+    flex-direction: column-reverse;
+}
+
+
+.firsbox2, .firsbox, .firsbox3, .firsbox4{
+    width: 100%;
+}
+
+
+.tops{
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
+
+.bythnumberbox{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    width: 100%;
+}
+
+.bythnumberbox div{
+    padding: 20px 0px;
+}
+
+
+
+.joinourfamily{
+    text-align: center;
+    width: 95%;
+    margin: auto;
+}
 }
 `
 

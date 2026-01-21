@@ -25,10 +25,10 @@ function App() {
     
     <Routes>
       <Route path='/' element={!token ? <Homepage /> : <Navigate to="/profile" replace />}/>
-      <Route path='/login' element={<Login/>}/>
+      <Route path='/login' element={!token ? <Login/> : <Navigate to="/profile" replace />}/>
       <Route path='/profile' element={<ProtectedRoute><Dashbaord/></ProtectedRoute>}/>
       <Route path='/about-us' element={<About/>}/>
-      <Route path='/open-account' element={<Openaccunt/>}/>
+      <Route path='/open-account' element={!token ? <Openaccunt/> : <Navigate to="/profile" replace />}/>
       <Route path='/contact-us' element={<Contact/>}/>
       </Routes>
       {/* {!token && <Footer />} */}

@@ -79,7 +79,7 @@ const About = () => {
                             <span>West Vent Online Bank was founded with a simple mission: to provide honest, reliable banking services to our local community.</span>
                         </div>
                     </div>
-                    <div className="ourbox">
+                    <div className="ourbox1">
                         <div className="secodnbx">
                             <p>Online Banking Launch</p>
                             <span>We embraced the digital revolution, launching our first online banking platform to serve customers 24/7.</span>
@@ -101,7 +101,7 @@ const About = () => {
                             <span>Launched our award-winning mobile app, making banking accessible anywhere, anytime.</span>
                         </div>
                     </div>
-                        <div className="ourbox">
+                        <div className="ourbox1">
                             <div className="secodnbx">
                             <p>Leading the Future</p>
                             <span>Continuing to innovate with AI-powered services, advanced security, and sustainable banking practices.</span>
