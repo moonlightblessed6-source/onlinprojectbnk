@@ -70,4 +70,11 @@ ul li:first-child{
     font-weight: 700;
     font-size: 16px;
 }
+
+
+@media screen and (max-width: 815px){
+    .main-foort{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
 `

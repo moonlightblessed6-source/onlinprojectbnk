@@ -30,9 +30,9 @@ function App() {
       <Route path='/open-account' element={<Openaccunt/>}/>
       <Route path='/contact-us' element={<Contact/>}/>
       </Routes>
-      {!token && <Footer />}
+      {/* {!token && <Footer />} */}
 
-      {/* <Footer/> */}
+      <Footer/>
     </>
   )
 }

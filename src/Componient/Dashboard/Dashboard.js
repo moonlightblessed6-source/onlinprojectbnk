@@ -212,10 +212,18 @@ background-color: #f8c728;
 
 
 @media screen and (max-width: 925px) {
-        .main-dashboard{
+  border: 1px solid;
+.main-dashboard{
 width: 95%;
+ padding: 20px 0px;
+ margin-bottom: 100px;
     }
+
+ 
+
 }
+
+
 
 @media screen and (max-width: 576px) {
     .sendtopup{
