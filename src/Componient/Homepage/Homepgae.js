@@ -29,22 +29,21 @@ height: auto;
     flex-direction: column;
     gap: 20px;
     width: 600px;
-    /* padding: 0px 80px; */
-    
+   
 }
 
 .homepage-topic h2{
-    margin-top: 10px;
+    margin-top: 40px;
     font-weight: 900;
     font-size: 50px;
-    padding: 30px 0px;
+    /* padding: 30px 0px; */
     line-height: 45px;
 }
 
 .Openaccount{
     display: flex;
     width: fit-content;
-    gap: 20px;
+    gap: 10px;
 }
 
 
@@ -733,8 +732,15 @@ margin: auto;
 
     .homepage-topic h2{
     font-weight: 900;
-    font-size: 30px;
-    line-height: 30px;
+    font-size: 20px;
+    line-height: 20px;
+    margin-top: -10px;
+ 
+}
+    .homepage-topic p{
+    font-size: 14px;
+    margin-top: -10px;
+    
    
 }
 
@@ -846,7 +852,12 @@ text-align: center;
 
 .Openaccount{
     flex-direction: column;
-    padding: 20px 0px;
+    /* padding: 20px 0px; */
+}
+
+
+.witht{
+    padding: 60px 10px;
 }
 }
 `
