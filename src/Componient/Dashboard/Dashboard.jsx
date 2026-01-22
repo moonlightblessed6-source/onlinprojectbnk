@@ -79,8 +79,8 @@ const Dashbaord = () => {
 
                 <div className="sendtopup">
                     <div className="onebyne1">
-                        <span ><IoAddCircleSharp/></span>
-                        <p>Top Up</p>
+                        <span onClick={() => window.location.href = '/direct-deposit'}><IoAddCircleSharp/></span>
+                        <p onClick={() => window.location.href = '/direct-deposit'}>Top Up</p>
                     </div>
                     <div className="onebyne">
                         <span ><BsFillSendFill/></span>
@@ -115,8 +115,8 @@ const Dashbaord = () => {
     </div>
 
         <div>
-        <span><FaLocationDot/></span>
-        <p>ATM & Cast Deposit Map</p>
+        <span onClick={() => window.location.href =  '/find-atm'}><FaLocationDot/></span>
+        <p onClick={() => window.location.href =  '/find-atm'}>ATM & Cast Deposit Map</p>
     </div>
         <div>
         <span onClick={() => window.location.href = '/contactus'}><FiHelpCircle/></span>
