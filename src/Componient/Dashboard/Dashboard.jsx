@@ -77,10 +77,10 @@ const Dashbaord = () => {
             </p>
           </div>
           <div className="onebyne">
-            <span>
+            <span onClick={() => window.location.href = '/transfer-list'}>
               <BsFillSendFill />
             </span>
-            <p>Send</p>
+            <p onClick={() => window.location.href = '/transfer-list'}>Send</p>
           </div>
           <div className="onebyne">
             <span onClick={() => (window.location.href = "/direct-deposit")}>
