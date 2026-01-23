@@ -129,7 +129,7 @@ const [message, setMessage] = useState(false)
             <div className="formslogin">
               <div>
                 <label htmlFor="Email Address or Username">
-                   Username
+                   User ID
                 </label>
                 <input
                   type="text"
@@ -137,7 +137,7 @@ const [message, setMessage] = useState(false)
                   id="username"
                   value={formData.username}
                   onChange={(e) => setFormData({...formData, username: e.target.value})}
-                  placeholder="Enter Your email address"
+                  placeholder="User ID"
                   required
                 />
               </div>
