@@ -42,7 +42,7 @@ const Dashbaord = () => {
 
           <div className="banaces">
             <p>Available Balance</p>
-            <span>            {new Intl.NumberFormat("en-US", {
+            <span> ${new Intl.NumberFormat("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
             }).format(fetchdata?.account?.balance)}</span>
