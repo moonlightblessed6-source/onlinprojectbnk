@@ -16,7 +16,7 @@ useEffect(() => {
   })
     .then((res) => {
       if (!res.ok) {
-        throw new Error("Unauthorized or failed request");
+        throw new Error("Please check your internet server");
       }
       return res.json();
     })
@@ -30,3 +30,8 @@ useEffect(() => {
 return fetchdata
   };
 export default useDashboard;
+
+
+
+
+

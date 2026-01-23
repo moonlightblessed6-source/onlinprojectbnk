@@ -116,10 +116,10 @@ const Dashbaord = () => {
             </p>
           </div>
           <div>
-            <span>
+            <span  onClick={() => (window.location.href = "/transaction")}>
               <TbTransactionDollar />
             </span>
-            <p>Transactions</p>
+            <p  onClick={() => (window.location.href = "/transaction")}>Transactions</p>
           </div>
           <div>
             <span
