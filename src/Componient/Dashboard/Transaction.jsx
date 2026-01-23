@@ -13,7 +13,7 @@ const Transaction = () => {
         if (!token) throw new Error("No auth token found");
 
         const res = await fetch(
-          "https://geochain.app/api/api/transactions/history/",
+          "http://127.0.0.1:8000/api/transactions/history/",
           {
             headers: {
               Authorization: `Token ${token}`,

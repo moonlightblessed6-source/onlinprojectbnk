@@ -19,6 +19,7 @@ import Transferlist from './Componient/Dashboard/Transferlist.jsx'
 import Overdraftprotection from './Componient/Dashboard/Overdraftprotection.jsx'
 import Transaction from './Componient/Dashboard/Transaction.jsx'
 import Accountprofile from './Componient/Dashboard/Accountprofile.jsx'
+import Wiretransfer from './Componient/Dashboard/Wiretransfer.jsx'
 
 
 
@@ -44,6 +45,7 @@ function App() {
       <Route path='/find-atm' element={<ProtectedRoute><FindAtm/></ProtectedRoute>}/>
       <Route path='/overdraft-protection' element={<ProtectedRoute><Overdraftprotection/></ProtectedRoute>}/>
       <Route path='/transfer-list' element={<ProtectedRoute><Transferlist/></ProtectedRoute>}/>
+      <Route path='/wire-transfer' element={<ProtectedRoute><Wiretransfer/></ProtectedRoute>}/>
       <Route path='/about-us' element={<About/>}/>
       <Route path='/open-account' element={!token ? <Openaccunt/> : <Navigate to="/profile" replace />}/>
       <Route path='/contact-us' element={<Contact/>}/>

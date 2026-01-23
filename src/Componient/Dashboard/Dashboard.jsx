@@ -25,15 +25,6 @@ const Dashbaord = () => {
     });
   };
 
-  // amount formatting
-  const formatCurrency = (amount) => {
-    if (!amount) return "$0.00";
-
-    return new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-    }).format(amount / 100);
-  };
 
   return (
     <Dashboards>
@@ -51,7 +42,10 @@ const Dashbaord = () => {
 
           <div className="banaces">
             <p>Available Balance</p>
-            <span>{formatCurrency(fetchdata?.account?.balance)}</span>
+            <span>            {new Intl.NumberFormat("en-US", {
+              minimumFractionDigits: 2,
+              maximumFractionDigits: 2,
+            }).format(fetchdata?.account?.balance)}</span>
           </div>
 
           <div className="actives">

@@ -27,7 +27,7 @@ const [message, setMessage] = useState(false)
 
 
       try {
-    const res = await fetch("https://geochain.app/api/api/login/", {
+    const res = await fetch("http://127.0.0.1:8000/api/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -5,15 +5,17 @@ import {Transferlis} from './Transferlist'
 
 const Transferlist = () => {
 
+    
+
     return(
         <Transferlis>
                                 <div className="header" onClick={() => window.location.href = '/profile'}>
               <FaArrowLeft/>
-                        <p>Contact Us</p>
+                        <p>Transfer</p>
                     </div>
         <div className="mains">
 
-<div >
+<div onClick={() => window.location.href = '/wire-transfer'} >
   <p>Wire Transfer</p>
 </div>
 <div>
