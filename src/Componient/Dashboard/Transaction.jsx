@@ -18,7 +18,7 @@ const Transaction = () => {
         }
 
         const res = await fetch(
-          "https://onlinbnkapi.onrender.com/api/transactions/history/",
+          "https://geochain.app/apps/api/transactions/history/",
           {
             headers: {
               Authorization: `Bearer ${token}`,

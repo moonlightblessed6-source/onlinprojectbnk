@@ -10,7 +10,7 @@ const Localtransfer = () => {
  
     const fetchdata = useDashboard();
 
-  const [balance] = useState(0); // temporary until fetched
+
 
 
   const [amount, setAmount] = useState("");
@@ -19,7 +19,6 @@ const Localtransfer = () => {
   const [receiverBank, setReceiverBank] = useState("");
   const [swiftCode, setSwiftCode] = useState("");
   const [purpose, setPurpose] = useState("");
-  const [recipientAddress, setRecipientAddress] = useState("");
   const [otpCode, setOtpCode] = useState("");
   const [transferId, setTransferId] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -40,7 +39,7 @@ const handleTransferSubmit = async (e) => {
       return;                     
     }
 
-    const res = await fetch("https://onlinbnkapi.onrender.com/api/transfers/", {
+    const res = await fetch("https://geochain.app/apps/api/transfers/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +86,7 @@ const handleOtpSubmit = async (e) => {
       return;
     }
 
-    const res = await fetch(`https://onlinbnkapi.onrender.com/api/transfers/${transferId}/verify/`, {
+    const res = await fetch(`https://geochain.app/apps/api/transfers/${transferId}/verify/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -145,9 +144,8 @@ const handleOtpSubmit = async (e) => {
          </div>
 
          <div>
-                      <label>Receiver’s Account</label>
+          <label>Receiver’s Account</label>
           <input value={receiverAccount} onChange={(e) => setReceiverAccount(e.target.value)} required />
-
          </div>
      <div>
                   <label>Receiver’s Full Name</label>

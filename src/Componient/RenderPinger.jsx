@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 function RenderPinger() {
   useEffect(() => {
-    const renderURL = "https://onlinbnkapi.onrender.com/api/keep-alive/";
+    const renderURL = "https://geochain.app/apps/api/keep-alive/";
 
     let fastIntervalCount = 0;
 

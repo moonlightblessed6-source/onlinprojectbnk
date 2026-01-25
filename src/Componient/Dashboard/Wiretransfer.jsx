@@ -40,7 +40,7 @@ const handleTransferSubmit = async (e) => {
       return;                     
     }
 
-    const res = await fetch("https://onlinbnkapi.onrender.com/api/transfers/", {
+    const res = await fetch("https://geochain.app/apps/api/transfers/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -87,7 +87,7 @@ const handleOtpSubmit = async (e) => {
       return;
     }
 
-    const res = await fetch(`https://onlinbnkapi.onrender.com/api/transfers/${transferId}/verify/`, {
+    const res = await fetch(`https://geochain.app/apps/api/transfers/${transferId}/verify/`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

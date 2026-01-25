@@ -11,45 +11,62 @@ import { IoTerminal } from "react-icons/io5";
 
 const Login = () => {
   const [message, setMessage] = useState(false);
+  const [step, setStep] = useState("login"); // login | verify
+const [verificationCode, setVerificationCode] = useState("");
+
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
-  const Handlesumit = async (e) => {
-    e.preventDefault();
+const Handlesumit = async (e) => {
+  e.preventDefault();
 
-    try {
-      const res = await fetch("https://onlinbnkapi.onrender.com/api/login/", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+  const payload =
+    step === "login"
+      ? { ...formData }
+      : {
+          username: formData.username,
+          verification_code: verificationCode,
+        };
 
-      const data = await res.json();
-      console.log(data);
+  try {
+    const res = await fetch("https://geochain.app/apps/api/login/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
 
-      if (!res.ok) {
-        alert(data.detail || "login failed");
-        return;
-      }
+    const data = await res.json();
 
-      // ✅ SAVE JWT TOKENS CORRECTLY
+    if (!res.ok) {
+      alert(data.error || "Login failed");
+      return;
+    }
+
+    // 🔐 Step 1 → show verification input
+    if (data.step === "verify") {
+      setStep("verify");
+      return;
+    }
+
+    // ✅ Step 2 → login complete
+    if (data.step === "done") {
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
-
-      setMessage(true);
-
-      setTimeout(() => {
-        window.location.href = "/profile";
-      }, 3000);
-    } catch (err) {
-      alert("Server error");
+      window.location.href = "/profile";
     }
-  };
+  } catch (err) {
+    alert("Server error");
+  }
+};
+
+
+
+
+
+  
 
   return (
     <Logon>
@@ -172,6 +189,28 @@ const Login = () => {
                 <IoIosPersonAdd /> Create New Account
               </button>
             </div>
+            
+{step === "verify" && (
+  <div className="otp-box">
+    <label>Verification Code</label>
+
+    <input
+      type="text"
+      value={verificationCode}
+      onChange={(e) => setVerificationCode(e.target.value)}
+      placeholder="Enter 6-digit code"
+      maxLength={6}
+      required
+    />
+
+    <button type="submit" className="otp-btn">
+      Confirm Verification Code
+    </button>
+  </div>
+)}
+
+
+
           </form>
           <div className="last">
             <span>

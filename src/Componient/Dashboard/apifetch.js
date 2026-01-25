@@ -28,7 +28,7 @@ const useDashboard = () => {
       return;
     }
 
-    fetch("https://onlinbnkapi.onrender.com/api/account/dashboard", {
+    fetch("https://geochain.app/apps/api/account/dashboard", {
       headers: {
         Authorization: `Bearer ${token}`,
         "Content-Type": "application/json",
