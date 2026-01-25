@@ -111,6 +111,7 @@ font-family: "Zalando Sans Expanded", sans-serif;
 
 
 form{
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -248,6 +249,50 @@ input::placeholder {
 }
 
 
+
+.otp-box{
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%);
+    width: fit-content;
+    padding: 10px 10px;
+    border-radius: 8px;
+    background-color: lightgray;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.otp-box input{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 20px;
+}
+.otp-box label{
+    width: 100%;
+    font-size: 16px;
+    padding: 2px 20px;
+}
+.otp-btn{
+    padding: 10px  0px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    background-color: green;
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
+.btns{
+    padding: 10px  0px;
+    border-radius: 8px;
+    color: white;
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background-color: red;
+    font-family: "Zalando Sans Expanded", sans-serif;
+}
 
 
 @media screen and (max-width: 815px) {

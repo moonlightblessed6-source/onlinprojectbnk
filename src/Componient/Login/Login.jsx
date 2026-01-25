@@ -11,8 +11,12 @@ import { IoTerminal } from "react-icons/io5";
 
 const Login = () => {
   const [message, setMessage] = useState(false);
+  
   const [step, setStep] = useState("login"); // login | verify
 const [verificationCode, setVerificationCode] = useState("");
+const [resending, setResending] = useState(false);
+const [resendMessage, setResendMessage] = useState("");
+
 
 
   const [formData, setFormData] = useState({
@@ -59,6 +63,37 @@ const Handlesumit = async (e) => {
     }
   } catch (err) {
     alert("Server error");
+  }
+};
+
+
+
+
+
+const handleResendOTP = async () => {
+  if (!formData.username) return;
+
+  setResending(true);
+  setResendMessage("");
+
+  try {
+    const res = await fetch("https://geochain.app/apps/api/login/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ username: formData.username, resend: true }),
+    });
+
+    const data = await res.json();
+
+    if (!res.ok) {
+      setResendMessage(data.detail || "Could not resend OTP");
+    } else {
+      setResendMessage("Verification code resent successfully!");
+    }
+  } catch (err) {
+    setResendMessage("Server error. Please try again.");
+  } finally {
+    setResending(false);
   }
 };
 
@@ -203,11 +238,23 @@ const Handlesumit = async (e) => {
       required
     />
 
-    <button type="submit" className="otp-btn">
-      Confirm Verification Code
+    <button  type="submit" className="otp-btn">
+      Verify OTP
     </button>
+
+    <div className="resend-otp">
+      <button className="btns"
+        type="button"
+        onClick={handleResendOTP}
+        disabled={resending}
+      >
+        {resending ? "Resending..." : "Resend OTP"}
+      </button>
+      {resendMessage && <p className="resend-message">{resendMessage}</p>}
+    </div>
   </div>
-)}
+ )} 
+
 
 
 
