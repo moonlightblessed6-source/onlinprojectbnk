@@ -93,7 +93,8 @@ const Transaction = () => {
                    </div>
                       
                       <div>
-                        <span>Ref: {tr.reference}</span>
+                        
+                       <span>Name: {tr.receiver_name}</span>  <span>Ref: {tr.reference}</span> 
                         
                       </div>
                     </div>

