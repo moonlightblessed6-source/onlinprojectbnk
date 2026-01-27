@@ -219,7 +219,16 @@ const Wiretransfer = () => {
         >
           <div>
             <label>From Account</label>
-            <input value={fetchdata?.account?.account_number || ""} disabled />
+            <input
+              value={
+                fetchdata?.account?.account_number &&
+                fetchdata.account.account_number.length >= 4
+                  ? "Checking *****" +
+                    fetchdata.account.account_number.slice(-4)
+                  : "Checking *****----"
+              }
+              disabled
+            />
           </div>
 
           <div>
