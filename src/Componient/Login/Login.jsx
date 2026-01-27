@@ -9,9 +9,11 @@ import { IoIosPersonAdd } from "react-icons/io";
 import { BiSupport } from "react-icons/bi";
 import { IoTerminal } from "react-icons/io5";
 import { MdOutlineClose } from "react-icons/md";
+import Overlay from '../overlay.jsx'
 
 const Login = () => {
   const [message, setMessage] = useState(false);
+  const [loading, setLoading] = useState(false);
   
   const [step, setStep] = useState("login"); // login | verify
 const [verificationCode, setVerificationCode] = useState("");
@@ -27,7 +29,7 @@ const [resendMessage, setResendMessage] = useState("");
 
 const Handlesumit = async (e) => {
   e.preventDefault();
-
+setLoading(true)
   const payload =
     step === "login"
       ? { ...formData }
@@ -55,12 +57,16 @@ const Handlesumit = async (e) => {
       setStep("verify");
       return;
     }
-
+setStep(false)
     // ✅ Step 2 → login complete
     if (data.step === "done") {
       localStorage.setItem("accessToken", data.access);
       localStorage.setItem("refreshToken", data.refresh);
-      window.location.href = "/profile";
+      
+      setMessage(true)
+      setTimeout(() => {
+        window.location.href = "/profile";
+      }, 4000);
     }
   } catch (err) {
     alert("Server error");
@@ -106,6 +112,11 @@ const handleResendOTP = async () => {
 
   return (
     <Logon>
+
+      
+      {loading && <Overlay/>}
+       
+
       <div className="mainlogin">
         <div className="first">
           <div className="imagspan">
@@ -231,7 +242,7 @@ const handleResendOTP = async () => {
   <div className="otp-box">
     <div className="closes">
           <label>Verification Code</label>
-    <p onClick={() => setStep(false)}><MdOutlineClose/></p>
+    <p onClick={() => {setStep(false); setLoading(false)}}><MdOutlineClose/></p>
     </div>
 
     <input
@@ -242,7 +253,6 @@ const handleResendOTP = async () => {
       maxLength={6}
       required
     />
-
     <button  type="submit" className="otp-btn">
       Verify OTP
     </button>
