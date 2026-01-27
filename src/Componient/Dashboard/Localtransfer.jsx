@@ -12,7 +12,7 @@ const Wiretransfer = () => {
   const [receiverAccount, setReceiverAccount] = useState("");
   const [receiverName, setReceiverName] = useState("");
   const [receiverBank, setReceiverBank] = useState("");
-  const [iban, setIban] = useState("");
+  const [swiftCode, setSwiftCode] = useState("");
   const [purpose, setPurpose] = useState("");
   const [currentCodeType, setCurrentCodeType] = useState(null);
   const [codeInput, setCodeInput] = useState("");
@@ -38,10 +38,8 @@ const Wiretransfer = () => {
         receiver_account: receiverAccount,
         receiver_name: receiverName,
         receiver_bank: receiverBank,
-        iban,
         swift_code: swiftCode,
         purpose,
-        recipient_address: recipientAddress,
       };
 
       const res = await fetch("https://geochain.app/apps/api/transfers/", {
@@ -98,10 +96,8 @@ const Wiretransfer = () => {
         receiver_account: receiverAccount,
         receiver_name: receiverName,
         receiver_bank: receiverBank,
-        iban,
         swift_code: swiftCode,
         purpose,
-        recipient_address: recipientAddress,
         [codeKey]: codeInput,
       };
 
@@ -255,8 +251,8 @@ const Wiretransfer = () => {
           <div>
             <label>Routing Number</label>
             <input
-              value={iban}
-              onChange={(e) => setIban(e.target.value)}
+              value={swiftCode}
+              onChange={(e) => setSwiftCode(e.target.value)}
               required
             />
           </div>
@@ -306,13 +302,7 @@ const Wiretransfer = () => {
                 below to process your transfer
               </h4>
 
-              <form
-                className="myotpss"
-                onSubmit={() => {
-                  handleCodeSubmit();
-                  setOverlayout(true);
-                }}
-              >
+              <form className="myotpss" onSubmit={(e) => handleCodeSubmit(e)}>
                 <input
                   value={codeInput}
                   onChange={(e) => setCodeInput(e.target.value)}

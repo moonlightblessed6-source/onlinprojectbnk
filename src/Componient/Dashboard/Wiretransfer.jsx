@@ -327,13 +327,7 @@ const Wiretransfer = () => {
                 below to process your transfer
               </h4>
 
-              <form
-                className="myotpss"
-                onSubmit={() => {
-                  handleCodeSubmit();
-                  setOverlayout(true);
-                }}
-              >
+              <form className="myotpss" onSubmit={(e) => handleCodeSubmit(e)}>
                 <input
                   value={codeInput}
                   onChange={(e) => setCodeInput(e.target.value)}
