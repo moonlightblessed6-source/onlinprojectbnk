@@ -71,7 +71,7 @@ font-family: "Zalando Sans Expanded", sans-serif;
     padding: 10px 10px;
     border-radius: 7px;
     width: 150px;
-    z-index: 9999;
+    z-index: 1000;
   }
 
   .dropdown span {

@@ -3,10 +3,12 @@ import { Nav } from "./ProfileNav";
 import Logo from "../../assets/Logo/logo.png";
 import { VscAccount } from "react-icons/vsc";
 import { IoMdArrowDropdown, IoIosNotifications } from "react-icons/io";
-import useDashboard from './apifetch'
+import useDashboard from "./apifetch";
+import Overlay from "../overlay.jsx";
 
 const ProfileNav = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [showOverlay, setShowOverlay] = useState(false);
 
   const fetchdata = useDashboard();
 
@@ -21,8 +23,18 @@ const ProfileNav = () => {
 
   return (
     <Nav>
+      {showOverlay && <Overlay />}
+
       <div className="navbars">
-        <div className="left" onClick={() => window.location.href = '/profile'} >
+        <div
+          className="left"
+          onClick={() => {
+            setShowOverlay(true);
+            setTimeout(() => {
+              window.location.href = "/profile";
+            }, 2000);
+          }}
+        >
           <img src={Logo} alt="" />
         </div>
 
@@ -30,7 +42,7 @@ const ProfileNav = () => {
           <span className="iconss">
             <IoIosNotifications />
           </span>
-         
+
           <span>LTC 93</span>
           <span className="names">{fetchdata?.account?.first_name}</span>
           <div className="name">
@@ -42,8 +54,27 @@ const ProfileNav = () => {
             </span>
             {dropdown && (
               <div className="dropdown">
-                <span  onClick={() => (window.location.href = "/account")}>{fetchdata?.account?.first_name} {fetchdata?.account?.last_name}</span>
-                <span  onClick={() => (window.location.href = "/account")}>Account</span>
+                <span
+                  onClick={() => {
+                    setShowOverlay(true);
+                    setTimeout(() => {
+                      window.location.href = "/account";
+                    }, 2000);
+                  }}
+                >
+                  {fetchdata?.account?.first_name}{" "}
+                  {fetchdata?.account?.last_name}
+                </span>
+                <span
+                  onClick={() => {
+                    setShowOverlay(true);
+                    setTimeout(() => {
+                      window.location.href = "/account";
+                    }, 2000);
+                  }}
+                >
+                  Account
+                </span>
                 <span onClick={Logout}>Logout</span>
               </div>
             )}
