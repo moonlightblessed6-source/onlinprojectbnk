@@ -9,113 +9,105 @@ import { IoIosPersonAdd } from "react-icons/io";
 import { BiSupport } from "react-icons/bi";
 import { IoTerminal } from "react-icons/io5";
 import { MdOutlineClose } from "react-icons/md";
-import Overlay from '../overlay.jsx'
+import Overlay from "../overlay.jsx";
 
 const Login = () => {
   const [message, setMessage] = useState(false);
   const [loading, setLoading] = useState(false);
-  
+
   const [step, setStep] = useState("login"); // login | verify
-const [verificationCode, setVerificationCode] = useState("");
-const [resending, setResending] = useState(false);
-const [resendMessage, setResendMessage] = useState("");
-
-
+  const [verificationCode, setVerificationCode] = useState("");
+  const [resending, setResending] = useState(false);
+  const [resendMessage, setResendMessage] = useState("");
 
   const [formData, setFormData] = useState({
     username: "",
     password: "",
   });
 
-const Handlesumit = async (e) => {
-  e.preventDefault();
-setLoading(true)
-  const payload =
-    step === "login"
-      ? { ...formData }
-      : {
-          username: formData.username,
-          verification_code: verificationCode,
-        };
+  const Handlesumit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    const payload =
+      step === "login"
+        ? { ...formData }
+        : {
+            username: formData.username,
+            verification_code: verificationCode,
+          };
 
-  try {
-    const res = await fetch("https://geochain.app/apps/api/login/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    });
+    try {
+      const res = await fetch("https://geochain.app/apps/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      alert(data.error || "Login failed");
-      return;
-    }
+      if (!res.ok) {
+        alert(data.error || "Login failed");
 
-    // 🔐 Step 1 → show verification input
-    if (data.step === "verify") {
-      setStep("verify");
-      return;
-    }
-setStep(false)
-    // ✅ Step 2 → login complete
-    if (data.step === "done") {
-      localStorage.setItem("accessToken", data.access);
-      localStorage.setItem("refreshToken", data.refresh);
-      
-      setMessage(true)
+        setTimeout(() => {
+          window.location.href = "/login";
+        }, 500);
+        return;
+      }
+
+      // 🔐 Step 1 → show verification input
+      if (data.step === "verify") {
+        setStep("verify");
+        return;
+      }
+      setStep(false);
+      // ✅ Step 2 → login complete
+      if (data.step === "done") {
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+
+        setMessage(true);
+        setTimeout(() => {
+          window.location.href = "/profile";
+        }, 4000);
+      }
+    } catch (err) {
+      alert("Server error");
       setTimeout(() => {
-        window.location.href = "/profile";
-      }, 4000);
+        window.location.href = "/login";
+      }, 500);
     }
-  } catch (err) {
-    alert("Server error");
-  }
-};
+  };
 
+  const handleResendOTP = async () => {
+    if (!formData.username) return;
 
+    setResending(true);
+    setResendMessage("");
 
+    try {
+      const res = await fetch("https://geochain.app/apps/api/login/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username: formData.username, resend: true }),
+      });
 
+      const data = await res.json();
 
-const handleResendOTP = async () => {
-  if (!formData.username) return;
-
-  setResending(true);
-  setResendMessage("");
-
-  try {
-    const res = await fetch("https://geochain.app/apps/api/login/", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: formData.username, resend: true }),
-    });
-
-    const data = await res.json();
-
-    if (!res.ok) {
-      setResendMessage(data.detail || "Could not resend OTP");
-    } else {
-      setResendMessage("Code resent.");
+      if (!res.ok) {
+        setResendMessage(data.detail || "Could not resend OTP");
+      } else {
+        setResendMessage("Code resent.");
+      }
+    } catch (err) {
+      setResendMessage("Server error. Please try again.");
+    } finally {
+      setResending(false);
     }
-  } catch (err) {
-    setResendMessage("Server error. Please try again.");
-  } finally {
-    setResending(false);
-  }
-};
-
-
-
-
-
-  
+  };
 
   return (
     <Logon>
-
-      
-      {loading && <Overlay/>}
-       
+      {loading && <Overlay />}
 
       <div className="mainlogin">
         <div className="first">
@@ -236,43 +228,48 @@ const handleResendOTP = async () => {
                 <IoIosPersonAdd /> Create New Account
               </button>
             </div>
-            
 
-{step === "verify" && (
-  <div className="otp-box">
-    <div className="closes">
-          <label>Verification Code</label>
-    <p onClick={() => {setStep(false); setLoading(false)}}><MdOutlineClose/></p>
-    </div>
+            {step === "verify" && (
+              <div className="otp-box">
+                <div className="closes">
+                  <label>Verification Code</label>
+                  <p
+                    onClick={() => {
+                      setStep(false);
+                      setLoading(false);
+                    }}
+                  >
+                    <MdOutlineClose />
+                  </p>
+                </div>
 
-    <input
-      type="text"
-      value={verificationCode}
-      onChange={(e) => setVerificationCode(e.target.value)}
-      placeholder="Enter 6-digit code"
-      maxLength={6}
-      required
-    />
-    <button  type="submit" className="otp-btn">
-      Verify OTP
-    </button>
+                <input
+                  type="text"
+                  value={verificationCode}
+                  onChange={(e) => setVerificationCode(e.target.value)}
+                  placeholder="Enter 6-digit code"
+                  maxLength={6}
+                  required
+                />
+                <button type="submit" className="otp-btn">
+                  Verify OTP
+                </button>
 
-    <div className="resend-otp">
-      <button className="btns"
-        type="button"
-        onClick={handleResendOTP}
-        disabled={resending}
-      >
-        {resending ? "Resending..." : "Resend OTP"}
-      </button>
-      {resendMessage && <p className="resend-message">{resendMessage}</p>}
-    </div>
-  </div>
-  )}  
-
-
-
-
+                <div className="resend-otp">
+                  <button
+                    className="btns"
+                    type="button"
+                    onClick={handleResendOTP}
+                    disabled={resending}
+                  >
+                    {resending ? "Resending..." : "Resend OTP"}
+                  </button>
+                  {resendMessage && (
+                    <p className="resend-message">{resendMessage}</p>
+                  )}
+                </div>
+              </div>
+            )}
           </form>
           <div className="last">
             <span>
