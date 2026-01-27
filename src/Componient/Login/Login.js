@@ -14,6 +14,11 @@ font-family: "Zalando Sans Expanded", sans-serif;
     border-radius: 10px;
     color: white;
     z-index: 10000;
+    top: 25%;
+}
+
+.resend-message{
+    font-size: 12px;
 }
 
 .mainlogin{
@@ -264,6 +269,7 @@ input::placeholder {
     flex-direction: column;
     gap: 6px;
     z-index: 9999;
+    width: 80%;
 }
 
 .otp-box input{

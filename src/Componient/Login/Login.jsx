@@ -95,7 +95,7 @@ const handleResendOTP = async () => {
     if (!res.ok) {
       setResendMessage(data.detail || "Could not resend OTP");
     } else {
-      setResendMessage("Verification code resent successfully!");
+      setResendMessage("Code resent.");
     }
   } catch (err) {
     setResendMessage("Server error. Please try again.");
