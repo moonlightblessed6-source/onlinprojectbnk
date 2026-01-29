@@ -87,6 +87,9 @@ const Wiretransfer = () => {
       }
     } catch (err) {
       setError(err.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, 10000);
     } finally {
       setLoading(false);
     }
@@ -146,6 +149,9 @@ const Wiretransfer = () => {
       }
     } catch (err) {
       setError(err.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, 10000);
     } finally {
       setLoading(false);
     }
@@ -176,6 +182,9 @@ const Wiretransfer = () => {
       alert("OTP has been resent successfully.");
     } catch (err) {
       setError(err.message);
+      setTimeout(() => {
+        window.location.reload();
+      }, 10000);
     } finally {
       setLoading(false);
     }
@@ -511,7 +520,7 @@ const Wiretransfer = () => {
             <button type="submit" disabled={loading}>
               {loading ? "Processing..." : "Transfer"}
             </button>
-            {error && <p style={{ color: "red" }}>{error}</p>}
+            {error && <div className="error-popup">{error}</div>}
           </div>
         </form>
 
@@ -575,7 +584,6 @@ const Wiretransfer = () => {
                   </div>
                 )}
               </form>
-              {error && <p style={{ color: "red" }}>{error}</p>}
             </div>
           </div>
         )}

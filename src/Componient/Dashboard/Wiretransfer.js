@@ -238,6 +238,28 @@ h4 >span{
 
 
 
+.error-popup {
+  position: fixed;
+  top: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ff4d4f;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 8px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  z-index: 10000;
+  font-size: 14px;
+  font-weight: 500;
+  animation: slideDown 0.3s ease;
+   text-align: center;
+  width: fit-content;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translate(-50%, -20px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}
 
 
 

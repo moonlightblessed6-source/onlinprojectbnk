@@ -15,6 +15,8 @@ const Login = () => {
   const [message, setMessage] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const [error, setError] = useState("");
+
   const [step, setStep] = useState("login"); // login | verify
   const [verificationCode, setVerificationCode] = useState("");
   const [resending, setResending] = useState(false);
@@ -46,11 +48,10 @@ const Login = () => {
       const data = await res.json();
 
       if (!res.ok) {
-        alert(data.error || "Login failed");
-
+        setError(data.error || "Login failed");
         setTimeout(() => {
           window.location.href = "/login";
-        }, 500);
+        }, 5000);
         return;
       }
 
@@ -71,10 +72,10 @@ const Login = () => {
         }, 4000);
       }
     } catch (err) {
-      alert("Server error");
+      setError(data.error || "Login failed");
       setTimeout(() => {
         window.location.href = "/login";
-      }, 500);
+      }, 4000);
     }
   };
 
@@ -168,6 +169,7 @@ const Login = () => {
         <div className="seconds">
           <form action="" onSubmit={Handlesumit}>
             {message && <p className="success-msg">Login Successful!</p>}
+            {error && <p className="errormessgae">{error}</p>}
             <p className="signin">Sign In</p>
             <span className="topis">
               Access your West Vent Online Bank account

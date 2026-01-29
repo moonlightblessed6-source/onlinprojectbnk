@@ -16,6 +16,16 @@ font-family: "Zalando Sans Expanded", sans-serif;
     z-index: 10000;
     top: 25%;
 }
+.errormessgae{
+    position: absolute;
+    width: fit-content;
+    background-color: red;
+    padding: 8px 8px;
+    border-radius: 10px;
+    color: white;
+    z-index: 10000;
+    top: 25%;
+}
 
 .resend-message{
     font-size: 12px;
