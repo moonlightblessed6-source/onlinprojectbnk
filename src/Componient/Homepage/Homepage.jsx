@@ -3,34 +3,24 @@ import { Homepages } from "./Homepgae";
 import { IoHomeOutline, IoPersonSharp } from "react-icons/io5";
 import { CiBank } from "react-icons/ci";
 import { MdBusinessCenter, MdStar } from "react-icons/md";
-import { FaCreditCard, FaPiggyBank, FaRegEnvelope, FaHandHoldingUsd } from "react-icons/fa";
+import {
+  FaCreditCard,
+  FaPiggyBank,
+  FaRegEnvelope,
+  FaHandHoldingUsd,
+} from "react-icons/fa";
 import { FcAbout } from "react-icons/fc";
 import { IoMdCall } from "react-icons/io";
-import featured from '../../assets/hompage/feature.jpg'
+import featured from "../../assets/hompage/feature.jpg";
 import { FaCheck } from "react-icons/fa6";
-import photo551836022 from './../../assets/hompage/photo-1551836022-deb4988cc6c0.avif'
-import photo99 from './../../assets/hompage/photo-1554224155-6726b3ff858f.avif'
-import photo929 from './../../assets/hompage/photo-1559526324-4b87b5e36e44.avif'
-import photo9292 from './../../assets/hompage/photo-1507003211169-0a1dd7228f2d.avif'
+import photo551836022 from "./../../assets/hompage/photo-1551836022-deb4988cc6c0.avif";
+import photo99 from "./../../assets/hompage/photo-1554224155-6726b3ff858f.avif";
+import photo929 from "./../../assets/hompage/photo-1559526324-4b87b5e36e44.avif";
+import photo9292 from "./../../assets/hompage/photo-1507003211169-0a1dd7228f2d.avif";
 import { FcBusinessContact } from "react-icons/fc";
-import { FaLocationDot ,FaCertificate} from "react-icons/fa6";
+import { FaLocationDot, FaCertificate } from "react-icons/fa6";
 import { FaSignInAlt } from "react-icons/fa";
 import { IoIosPersonAdd } from "react-icons/io";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 const Homepage = () => {
   return (
@@ -38,17 +28,34 @@ const Homepage = () => {
       <div className="homepage-main">
         <div className="witht">
           <div className="homepage-topic">
-            <h2>
-              West Vent Online
-              Bank
-            </h2>
+            <h2>West Vent Online Bank</h2>
             <p>
               We do banking differently. We believe that people come first, and
-that everyone deserves a great experience every step of the way.
+              that everyone deserves a great experience every step of the way.
             </p>
             <div className="Openaccount">
-              <button style={{display: 'flex', justifyContent:'center', alignItems: 'center', gap: '3px'}} onClick={() => window.location.href = '/open-account'}><IoIosPersonAdd/> Open Account Today</button>
-              <button style={{display: 'flex', justifyContent:'center', alignItems: 'center', gap: '3px'}} onClick={() => window.location.href = '/login'}><FaSignInAlt/> Login to Banking</button>
+              <button
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "3px",
+                }}
+                onClick={() => (window.location.href = "/open-account")}
+              >
+                <IoIosPersonAdd /> Open Account Today
+              </button>
+              <button
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  gap: "3px",
+                }}
+                onClick={() => (window.location.href = "/login")}
+              >
+                <FaSignInAlt /> Login to Banking
+              </button>
             </div>
           </div>
 
@@ -58,7 +65,9 @@ that everyone deserves a great experience every step of the way.
                 <p>ROUTING #</p>
                 <p>251480576</p>
               </div>
-              <div><CiBank/></div>
+              <div>
+                <CiBank />
+              </div>
             </div>
             <div className="box-same">
               <div className="writeup">
@@ -66,7 +75,9 @@ that everyone deserves a great experience every step of the way.
                 <p>Mon-Fri: 9AM-5PM</p>
                 <p>Sat: 9AM-1PM</p>
               </div>
-              <div><FcAbout/></div>
+              <div>
+                <FcAbout />
+              </div>
             </div>
             <div className="box-same">
               <div className="writeup">
@@ -74,37 +85,45 @@ that everyone deserves a great experience every step of the way.
                 <p>1-800-BANKING</p>
                 <p>Always here to help</p>
               </div>
-              <div><IoMdCall/></div>
+              <div>
+                <IoMdCall />
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-                <div className="Rountineout">
-            <div className="box-same">
-              <div className="writeup">
-                <p>ROUTING #</p>
-                <p>251480576</p>
-              </div>
-              <div><CiBank/></div>
-            </div>
-            <div className="box-same">
-              <div className="writeup">
-                <p>RANCH HOURS</p>
-                <p>Mon-Fri: 9AM-5PM</p>
-                <p>Sat: 9AM-1PM</p>
-              </div>
-              <div><FcAbout/></div>
-            </div>
-            <div className="box-same">
-              <div className="writeup">
-                <p>24/7 SUPPORT</p>
-                <p>1-800-BANKING</p>
-                <p>Always here to help</p>
-              </div>
-              <div><IoMdCall/></div>
-            </div>
+      <div className="Rountineout">
+        <div className="box-same">
+          <div className="writeup">
+            <p>ROUTING #</p>
+            <p>251480576</p>
           </div>
+          <div>
+            <CiBank />
+          </div>
+        </div>
+        <div className="box-same">
+          <div className="writeup">
+            <p>RANCH HOURS</p>
+            <p>Mon-Fri: 9AM-5PM</p>
+            <p>Sat: 9AM-1PM</p>
+          </div>
+          <div>
+            <FcAbout />
+          </div>
+        </div>
+        <div className="box-same">
+          <div className="writeup">
+            <p>24/7 SUPPORT</p>
+            <p>1-800-BANKING</p>
+            <p>Always here to help</p>
+          </div>
+          <div>
+            <IoMdCall />
+          </div>
+        </div>
+      </div>
 
       <div className="homepage-body">
         <div className="onliebank">
@@ -117,7 +136,9 @@ that everyone deserves a great experience every step of the way.
 
         <div className="rate-box">
           <div>
-            <span className="spans1"><FaPiggyBank/></span>
+            <span className="spans1">
+              <FaPiggyBank />
+            </span>
             <div className="insid-ratebox">
               <p className="percent1">3.75%</p>
               <span className="apy">APY*</span>
@@ -127,7 +148,9 @@ that everyone deserves a great experience every step of the way.
             </div>
           </div>
           <div>
-            <span className="spans2"><FaCertificate/></span>
+            <span className="spans2">
+              <FaCertificate />
+            </span>
             <div className="insid-ratebox">
               <p className="percent2">3.75%</p>
               <span className="apy">APY*</span>
@@ -137,7 +160,10 @@ that everyone deserves a great experience every step of the way.
             </div>
           </div>
           <div>
-            <span className="spans3"> <FaCreditCard /></span>
+            <span className="spans3">
+              {" "}
+              <FaCreditCard />
+            </span>
             <div className="insid-ratebox">
               <p className="percent3">3.75%</p>
               <span className="apy">APY*</span>
@@ -147,7 +173,9 @@ that everyone deserves a great experience every step of the way.
             </div>
           </div>
           <div>
-            <span className="spans4"><FaHandHoldingUsd/></span>
+            <span className="spans4">
+              <FaHandHoldingUsd />
+            </span>
             <div className="insid-ratebox">
               <p className="percent4">3.75%</p>
               <span className="apy">APY*</span>
@@ -167,16 +195,14 @@ that everyone deserves a great experience every step of the way.
       <div className="howtohelpyoutoday">
         <div className="server">
           <p>Our Services</p>
-                  <h2>How Can We Help You Today?</h2>
-        <span>Comprehensive banking solutions tailored to your needs</span>
+          <h2>How Can We Help You Today?</h2>
+          <span>Comprehensive banking solutions tailored to your needs</span>
         </div>
-
 
         <div className="howtohlepyoubox">
           <div>
             <span>
-              <CiBank/>
-             
+              <CiBank />
             </span>
             <h1>Deposit Accounts</h1>
             <p>
@@ -195,70 +221,87 @@ that everyone deserves a great experience every step of the way.
             </p>
           </div>
           <div>
-            <span> <IoHomeOutline /></span>
+            <span>
+              {" "}
+              <IoHomeOutline />
+            </span>
             <h1>Loans</h1>
             <p>
-              Get competitive rates on personal, auto, and home loans tailored to your financial goals.
-
-
+              Get competitive rates on personal, auto, and home loans tailored
+              to your financial goals.
             </p>
           </div>
           <div>
-            <span><MdBusinessCenter/></span>
+            <span>
+              <MdBusinessCenter />
+            </span>
             <h1>Business Banking</h1>
             <p>
-              Comprehensive banking solutions designed to help your business thrive and grow.
-
-
+              Comprehensive banking solutions designed to help your business
+              thrive and grow.
             </p>
           </div>
           <div>
-            <span><FaPiggyBank/></span>
+            <span>
+              <FaPiggyBank />
+            </span>
             <h1>Wealth & Retire</h1>
             <p>
-              Plan for your future with our expert investment and retirement planning services.
+              Plan for your future with our expert investment and retirement
+              planning services.
             </p>
           </div>
           <div>
-            <span><FcAbout/></span>
+            <span>
+              <FcAbout />
+            </span>
             <h1>About West Vent Online Bank</h1>
             <p>
-             Learn more about our commitment to exceptional banking services and community support.
-
-
+              Learn more about our commitment to exceptional banking services
+              and community support.
             </p>
           </div>
         </div>
       </div>
 
-
-
       <div className="Financialstrength">
-
         <div className="Financial">
-         <img src={featured} alt="featured" />
+          <img src={featured} alt="featured" />
         </div>
 
         <div className="Financialbuilding">
-          <p className="topichere">Get $200* With a Checking Account Built for You</p>
+          <p className="topichere">
+            Get $200* With a Checking Account Built for You
+          </p>
           <div className="businesss">
             <h1>Start Building Your Financial Strength</h1>
-          <p>For a limited time, get a $200 when you open any new account, and what helps you reach your financial goals. You can open a new account online or in person at any of our locations.</p>
-
+            <p>
+              For a limited time, get a $200 when you open any new account, and
+              what helps you reach your financial goals. You can open a new
+              account online or in person at any of our locations.
+            </p>
           </div>
           <div className="minimumbalance">
-            <span><FaCheck/> No minimum balance required</span>
-            <span><FaCheck/> Free online and mobile banking</span>
-            <span><FaCheck/> 24/7 customer support</span>
+            <span>
+              <FaCheck /> No minimum balance required
+            </span>
+            <span>
+              <FaCheck /> Free online and mobile banking
+            </span>
+            <span>
+              <FaCheck /> 24/7 customer support
+            </span>
           </div>
           <div>
-            <button className="btn" onClick={() => window.location.href = '/open-account'}><IoIosPersonAdd/> Open Account Now</button>
+            <button
+              className="btn"
+              onClick={() => (window.location.href = "/open-account")}
+            >
+              <IoIosPersonAdd /> Open Account Now
+            </button>
           </div>
         </div>
-
-
       </div>
-
 
       <div className="MemberFocusedBanking">
         <div className="div">
@@ -267,44 +310,54 @@ that everyone deserves a great experience every step of the way.
         <div className="focuedbox">
           <div className="firsrbox">
             <h1 className="h1here">Building Strength Together</h1>
-            <p className="pfirsrbox">West Vent Online Bank is a full-service credit union built on the foundation of providing our members with every step of their financial journey. We're committed to helping our members achieve their financial goals through personalized service and competitive rates.</p>
-         
-         <div className="columbox">
-          <div>
-            <p>Competitive Rates</p>
-            <span>Better rates on savings, loans, and credit cards designed to maximize your financial growth.</span>
+            <p className="pfirsrbox">
+              West Vent Online Bank is a full-service credit union built on the
+              foundation of providing our members with every step of their
+              financial journey. We're committed to helping our members achieve
+              their financial goals through personalized service and competitive
+              rates.
+            </p>
+
+            <div className="columbox">
+              <div>
+                <p>Competitive Rates</p>
+                <span>
+                  Better rates on savings, loans, and credit cards designed to
+                  maximize your financial growth.
+                </span>
+              </div>
+              <div>
+                <p>Member-Focused</p>
+                <span>
+                  We're owned by our members, not shareholders. Your success is
+                  our priority.
+                </span>
+              </div>
+              <div>
+                <p>Community Committed</p>
+                <span>
+                  Supporting local communities and causes that matter to our
+                  members.
+                </span>
+              </div>
+            </div>
           </div>
-          <div>
-            <p>Member-Focused</p>
-            <span>We're owned by our members, not shareholders. Your success is our priority.</span>
-          </div>
-          <div>
-            <p>Community Committed</p>
-            <span>Supporting local communities and causes that matter to our members.</span>
+
+          <div className="imgebuld">
+            <div>
+              <img src={photo551836022} alt="photo-1551836022-deb4988cc6c0" />
+            </div>
+            <div>
+              <img src={photo9292} alt="" />
+            </div>
+            <div>
+              <img src={photo929} alt="" />
+            </div>
+            <div>
+              <img src={photo99} alt="photo99" />
+            </div>
           </div>
         </div>
-         </div>
-
-         <div className="imgebuld">
-          <div>
-            <img src={photo551836022} alt="photo-1551836022-deb4988cc6c0" />
-          </div>
-          <div>
-            
-            <img src={photo9292} alt="" />
-          </div>
-          <div>
-            <img src={photo929} alt="" />
-          </div>
-          <div>
-            <img src={photo99} alt="photo99" />
-          </div>
-          
-         </div>
-
-        </div>
-
-
       </div>
 
       <div className="testimonial">
@@ -312,11 +365,17 @@ that everyone deserves a great experience every step of the way.
 
         <div className="testmoniabox">
           <div>
-            <span className="mystart"><MdStar/> <MdStar/> <MdStar/> <MdStar/> <MdStar/></span>
-            <p className="heade">"I am impressed with the customer service and speed of payout."</p>
+            <span className="mystart">
+              <MdStar /> <MdStar /> <MdStar /> <MdStar /> <MdStar />
+            </span>
+            <p className="heade">
+              "I am impressed with the customer service and speed of payout."
+            </p>
             <div className="image">
               <div>
-               <span className="spamhuman"><IoPersonSharp/></span>
+                <span className="spamhuman">
+                  <IoPersonSharp />
+                </span>
               </div>
               <div>
                 <p>Sarah Morris</p>
@@ -325,11 +384,17 @@ that everyone deserves a great experience every step of the way.
             </div>
           </div>
           <div>
-            <span className="mystart"><MdStar/> <MdStar/> <MdStar/> <MdStar/> <MdStar/></span>
-            <p className="heade">"Excellent service and competitive rates. Highly recommended!"</p>
+            <span className="mystart">
+              <MdStar /> <MdStar /> <MdStar /> <MdStar /> <MdStar />
+            </span>
+            <p className="heade">
+              "Excellent service and competitive rates. Highly recommended!"
+            </p>
             <div className="image">
               <div>
-               <span className="spamhuman"><IoPersonSharp/></span>
+                <span className="spamhuman">
+                  <IoPersonSharp />
+                </span>
               </div>
               <div>
                 <p>John Davis</p>
@@ -338,11 +403,17 @@ that everyone deserves a great experience every step of the way.
             </div>
           </div>
           <div>
-            <span className="mystart"><MdStar/> <MdStar/> <MdStar/> <MdStar/> <MdStar/></span>
-            <p className="heade">"The mobile app is fantastic and customer support is top-notch."</p>
+            <span className="mystart">
+              <MdStar /> <MdStar /> <MdStar /> <MdStar /> <MdStar />
+            </span>
+            <p className="heade">
+              "The mobile app is fantastic and customer support is top-notch."
+            </p>
             <div className="image">
               <div>
-               <span className="spamhuman"><IoPersonSharp/></span>
+                <span className="spamhuman">
+                  <IoPersonSharp />
+                </span>
               </div>
               <div>
                 <p>Emily Johnson</p>
@@ -350,36 +421,41 @@ that everyone deserves a great experience every step of the way.
               </div>
             </div>
           </div>
-
-          
         </div>
       </div>
-
 
       <div className="openshours">
         <div className="openhoursmain">
           <div>
-            <span className="spamhuma"><FcBusinessContact/></span>
+            <span className="spamhuma">
+              <FcBusinessContact />
+            </span>
             <p>Banking Hours</p>
             <span>Mon-Fri: 9AM-5PM</span>
             <span>Sat: 9AM-1PM</span>
             <span>Sun: Closed</span>
           </div>
           <div>
-            <span className="spamhuma"><IoMdCall/></span>
+            <span className="spamhuma">
+              <IoMdCall />
+            </span>
             <p>Phone Banking</p>
             <span>Available 24/7</span>
             <span>Call: 1-800-BANKING</span>
             <span>International: +1-555-0123</span>
           </div>
           <div>
-            <span className="spamhuma"><FaRegEnvelope/></span>
+            <span className="spamhuma">
+              <FaRegEnvelope />
+            </span>
             <p>Email Support</p>
             <span>Response within 24hrs</span>
-            <span>info@westventonline.com</span>
+            <span>info@westventonline.org</span>
           </div>
           <div>
-            <span className="spamhuma"><FaLocationDot/></span>
+            <span className="spamhuma">
+              <FaLocationDot />
+            </span>
             <p>Visit Us</p>
             <span>123 Banking Street</span>
             <span>Financial District</span>
