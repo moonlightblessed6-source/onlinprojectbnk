@@ -21,6 +21,7 @@ import Transaction from "./Componient/Dashboard/Transaction.jsx";
 import Accountprofile from "./Componient/Dashboard/Accountprofile.jsx";
 import Wiretransfer from "./Componient/Dashboard/Wiretransfer.jsx";
 import Localtransfer from "./Componient/Dashboard/Localtransfer.jsx";
+import Grants from "./Componient/grants/grants.jsx";
 
 function App() {
   const token = localStorage.getItem("accessToken");
@@ -86,14 +87,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/find-atm"
-          element={
-            // <ProtectedRoute>
-            <FindAtm />
-            // </ProtectedRoute>
-          }
-        />
+        <Route path="/find-atm" element={<FindAtm />} />
         <Route
           path="/overdraft-protection"
           element={
@@ -132,6 +126,7 @@ function App() {
           element={!token ? <Openaccunt /> : <Navigate to="/profile" replace />}
         />
         <Route path="/contact-us" element={<Contact />} />
+        <Route path="/grants" element={<Grants />} />
       </Routes>
       {!token && <Footer />}
 
